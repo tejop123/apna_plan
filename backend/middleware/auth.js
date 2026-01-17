@@ -33,4 +33,10 @@ function authorize(roles = []) {
   };
 }
 
-module.exports = { authenticate, authorize };
+// Middleware for user authentication
+const requireAuth = authenticate;
+
+// Middleware for admin authorization
+const requireAdmin = authorize('admin');
+
+module.exports = { authenticate, authorize, requireAuth, requireAdmin };

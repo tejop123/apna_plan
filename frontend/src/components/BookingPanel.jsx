@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
 import { QRCodeCanvas } from 'qrcode.react';
-import travelApi from '../services/travelApi';
+import { useEffect, useMemo, useState } from 'react';
 import BookingScanner from '../pages/Scanner';
+import travelApi from '../services/travelApi';
 
 const initialFormState = {
   name: '',

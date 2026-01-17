@@ -120,6 +120,69 @@ const travelApi = {
     const { data } = await apiClient.post('/chatbot/ask', { question });
     return data?.answer;
   },
+  // Payment API methods
+  async createPaymentOrder(bookingId, amount) {
+    const { data } = await apiClient.post('/payments/create-order', { bookingId, amount });
+    return data;
+  },
+  async verifyPayment(orderId, paymentId, signature, bookingId) {
+    const { data } = await apiClient.post('/payments/verify', { orderId, paymentId, signature, bookingId });
+    return data;
+  },
+  async getPaymentHistory(page = 1, limit = 10) {
+    const { data } = await apiClient.get(`/payments/history?page=${page}&limit=${limit}`);
+    return data;
+  },
+  async requestRefund(bookingId, reason) {
+    const { data } = await apiClient.post(`/payments/refund/${bookingId}`, { reason });
+    return data;
+  },
+  // Reviews API methods
+  async createReview(reviewData) {
+    const { data } = await apiClient.post('/reviews', reviewData);
+    return data;
+  },
+  async getItemReviews(itemId, itemType, page = 1) {
+    const { data } = await apiClient.get(`/reviews/item?itemId=${itemId}&itemType=${itemType}&page=${page}`);
+    return data;
+  },
+  async getUserReviews(page = 1) {
+    const { data } = await apiClient.get(`/reviews/user/my-reviews?page=${page}`);
+    return data;
+  },
+  async updateReview(reviewId, reviewData) {
+    const { data } = await apiClient.put(`/reviews/${reviewId}`, reviewData);
+    return data;
+  },
+  async deleteReview(reviewId) {
+    const { data } = await apiClient.delete(`/reviews/${reviewId}`);
+    return data;
+  },
+  async markReviewHelpful(reviewId, helpful) {
+    const { data } = await apiClient.post(`/reviews/${reviewId}/helpful`, { helpful });
+    return data;
+  },
+  // Booking History API methods
+  async getBookingHistory(page = 1, limit = 10, status = '') {
+    const { data } = await apiClient.get(`/history?page=${page}&limit=${limit}&status=${status}`);
+    return data;
+  },
+  async getBookingStats() {
+    const { data } = await apiClient.get('/history/stats');
+    return data;
+  },
+  async getBookingDetails(bookingId) {
+    const { data } = await apiClient.get(`/history/${bookingId}`);
+    return data;
+  },
+  async cancelBooking(bookingId, reason) {
+    const { data } = await apiClient.post(`/history/${bookingId}/cancel`, { reason });
+    return data;
+  },
+  async downloadTicket(bookingId) {
+    const { data } = await apiClient.get(`/history/${bookingId}/download`);
+    return data;
+  },
   setAuthToken
 };
 

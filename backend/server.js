@@ -12,6 +12,10 @@ const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 require('./services/mockIntegrations');
 
+// Import services
+const RealtimeSeatService = require('./services/realtimeSeatService');
+const { verifyTransporter } = require('./services/emailService');
+
 const app = express();
 
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '').split(',').map((origin) => origin.trim()).filter(Boolean);
@@ -51,6 +55,9 @@ const hotelRoutes = require('./routes/hotelRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const chatbotRoutes = require('./routes/chatbotRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
+const historyRoutes = require('./routes/historyRoutes');
 
 // Use Routes
 app.use('/api/users', userRoutes);
@@ -61,6 +68,9 @@ app.use('/api/hotels', hotelRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/chatbot', chatbotRoutes);
+app.use('/api/payments', paymentRoutes);
+app.use('/api/reviews', reviewRoutes);
+app.use('/api/history', historyRoutes);
 
 app.get('/favicon.ico', (req, res) => {
   res.status(204).end();
@@ -76,6 +86,53 @@ app.use((req, res, next) => {
 });
 
 app.use(errorHandler);
+
+// Create HTTP server and Socket.IO
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: allowedOrigins.length ? allowedOrigins : true,
+    methods: ['GET', 'POST']
+  }
+});
+
+// Initialize real-time seat service
+const seatService = new RealtimeSeatService(io);
+
+// Socket.IO connection handling
+io.on('connection', (socket) => {
+  console.log(`User connected: ${socket.id}`);
+
+  // Register user
+  socket.on('register', (userId) => {
+    seatService.registerUser(userId, socket.id);
+    socket.join(`user_${userId}`);
+  });
+
+  // Subscribe to seat updates for specific item
+  socket.on('subscribeSeats', (itemId) => {
+    socket.join(`seats_${itemId}`);
+    seatService.subscribeToSeats(socket.id, itemId);
+  });
+
+  // Unsubscribe from seat updates
+  socket.on('unsubscribeSeats', (itemId) => {
+    socket.leave(`seats_${itemId}`);
+  });
+
+  // Disconnect
+  socket.on('disconnect', () => {
+    console.log(`User disconnected: ${socket.id}`);
+  });
+});
+
+// Attach seat service to app for use in routes
+app.locals.seatService = seatService;
+
+// Cleanup expired seat holds every 5 minutes
+setInterval(() => {
+  seatService.cleanupExpiredHolds();
+}, 5 * 60 * 1000);
 
 const PORT = process.env.PORT || 5000;
 

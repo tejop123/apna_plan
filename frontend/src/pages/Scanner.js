@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { BrowserMultiFormatReader } from '@zxing/browser';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import travelApi from '../services/travelApi';
 
 function parseBookingIdFromPayload(text) {

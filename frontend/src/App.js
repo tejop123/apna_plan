@@ -5,13 +5,12 @@ import Navbar from './components/Navbar';
 import BusBooking from './pages/BusBooking';
 import FlightBooking from './pages/FlightBooking';
 import GetApp from './pages/GetApp';
-import Home from './pages/Home';
 import HotelBooking from './pages/HotelBooking';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import BookingScanner from './pages/Scanner';
 import TrainBooking from './pages/TrainBooking';
 import TravelContacts from './pages/TravelContacts';
-import BookingScanner from './pages/Scanner';
 
 const authHiddenRoutes = ['/login', '/register'];
 
