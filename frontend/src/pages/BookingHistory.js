@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Calendar, MapPin, DollarSign, Download, Star, Trash2 } from 'lucide-react';
 import travelApi from '../services/travelApi';
 import { useI18n } from '../context/I18nContext';
@@ -11,11 +11,7 @@ const BookingHistory = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => {
-    fetchBookings();
-  }, [filter, page]);
-
-  const fetchBookings = async () => {
+  const fetchBookings = useCallback(async () => {
     try {
       setLoading(true);
       const status = filter === 'all' ? '' : filter;
@@ -27,7 +23,11 @@ const BookingHistory = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter, page]);
+
+  useEffect(() => {
+    fetchBookings();
+  }, [fetchBookings]);
 
   const handleCancelBooking = async (bookingId) => {
     if (window.confirm('Are you sure you want to cancel this booking?')) {
