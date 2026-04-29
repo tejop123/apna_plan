@@ -1,10 +1,10 @@
 # Apna Plan - Travel Booking Platform
 
 ## Project Title (50 words)
-Immersive Ixigo-Inspired Travel Booking Experience Delivering Flights, Trains, Buses, Hotels, Insightful Admin Analytics, Unified Search, Personalized Recommendations, Secure Auth, Responsive React UI, Modular Express APIs, Mock Inventory Simulation, Scalable Architecture, Performance Optimization, Educational Full-Stack Showcase, Data-Driven Insights, Cloud-Ready Deployment, Extensible Integrations, Seamless Booking Journeys, Engaging UI Flourishes Across Multiple Touchpoints.
+Comprehensive Apna Plan Travel Booking Experience Delivering Flights, Trains, Buses, Hotels, Insightful Admin Analytics, Unified Search, Personalized Recommendations, Secure Auth, Responsive React UI, Modular Express APIs, Mock Inventory Simulation, Scalable Architecture, Performance Optimization, Educational Full-Stack Showcase, Data-Driven Insights, Cloud-Ready Deployment, Extensible Integrations, Seamless Booking Journeys, Engaging UI Flourishes Across Multiple Touchpoints.
 
 ## Objective
-Deliver a learning-focused full-stack reference that mirrors Ixigo's multimodal booking capabilities while emphasizing clean React UI patterns, modular Express APIs, mock travel inventory pipelines, and extensibility hooks for future upgrades such as MongoDB persistence, payment workflows, analytics, and cloud-native deployment.
+Deliver a learning-focused full-stack reference with comprehensive multimodal booking capabilities while emphasizing clean React UI patterns, modular Express APIs, mock travel inventory pipelines, and extensibility hooks for future upgrades such as MongoDB persistence, payment workflows, analytics, and cloud-native deployment.
 
 ## Description
 This project combines a responsive React frontend with an Express backend to simulate end-to-end booking flows for flights, trains, buses, and hotels. Users can search itineraries, review curated results, and manage reservations, while the admin panel surfaces rosters, booking stats, and user insights. Mock stores emulate real-time travel inventory so contributors can iterate quickly without external dependencies.
@@ -25,7 +25,7 @@ Training pipelines emphasize curated, high-signal datasets collected from mock b
 ## Project Structure
 
 ```
-ixigo/
+apna-plan/
 ├── frontend/                 # React Frontend Application
 │   ├── src/
 │   │   ├── pages/           # Page components
@@ -58,7 +58,7 @@ ixigo/
 - **Hotel Booking**: Search hotels with room types and amenities
 - **Admin Panel**: Dashboard with user and booking management
 - **Responsive Design**: Mobile-friendly UI using Ant Design and CSS
-- **Modern UI**: Professional design similar to official Ixigo website
+- **Modern UI**: Professional and modern design for travel bookings
 
 ### Backend
 - **RESTful API**: Express.js server with multiple endpoints
@@ -66,6 +66,30 @@ ixigo/
 - **Routes**: Organized routing for all modules
 - **Admin Endpoints**: Analytics and management endpoints
 - **CORS**: Enabled for frontend communication
+
+## Output Features
+
+### User Outputs
+- **Booking Confirmations**: Detailed confirmation with booking reference number and itinerary details
+- **QR Codes**: Scannable QR codes for quick check-in and validation
+- **Travel Receipts**: PDF-formatted receipts with pricing breakdown and payment details
+- **Booking History**: Complete list of past bookings with status tracking
+- **Email Notifications**: Confirmation emails, booking updates, and cancellation notices
+
+### Admin Outputs
+- **Dashboard Analytics**: Real-time statistics on bookings, revenue, and user activity
+- **Reports**: Detailed reports on flight, train, bus, and hotel bookings
+- **User Roster**: Comprehensive list of registered users with booking history
+- **Revenue Reports**: Payment transaction summaries and revenue analytics
+- **Inventory Management**: Real-time seat and room availability status
+- **Export Capabilities**: Download analytics and reports in structured formats
+
+### System Outputs
+- **Search Results**: Filtered and ranked travel options based on user criteria
+- **Availability Data**: Real-time inventory status for all travel modes
+- **Personalized Recommendations**: ML-powered suggestions based on user preferences
+- **Error Messages**: Clear, actionable error feedback for validation and system issues
+- **Chat Responses**: Intelligent chatbot assistance for travel inquiries and bookings
 
 ## Technologies Used
 
@@ -103,7 +127,7 @@ npm install
 3. Create `.env` file with the following variables:
 ```
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/ixigo
+MONGODB_URI=mongodb://localhost:27017/apna_plan
 JWT_SECRET=your_jwt_secret_key_here
 NODE_ENV=development
 ```
@@ -245,7 +269,7 @@ This project is open source and available under the MIT License.
 
 ## Contact
 
-For support, email support@ixigo.com or visit the website.
+For support, email support@apnaplan.com or visit the website.
 
 ---
 
