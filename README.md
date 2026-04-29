@@ -267,9 +267,19 @@ Feel free to fork this project and submit pull requests for any improvements.
 
 This project is open source and available under the MIT License.
 
+## Screenshots
+
+### Desktop Views
+![Desktop View 1](https://github.com/user-attachments/assets/69bf2b7f-a1a0-4a73-bfa5-680a744c237f)
+![Desktop View 2](https://github.com/user-attachments/assets/b37a3935-6fcb-498b-aa9b-16f31954f328)
+![Desktop View 3](https://github.com/user-attachments/assets/8abf51af-fcec-464a-90e2-ad95447cbdd2)
+
+### Mobile Views
+![Mobile View](https://github.com/user-attachments/assets/bdf7e538-53b4-4c6b-b329-ac9cf2b63626)
+
 ## Contact
 
-For support, email support@apnaplan.com or visit the website.
+For support, email tm344556@gmail.com or visit the website.
 
 ---
 
