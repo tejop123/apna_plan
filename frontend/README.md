@@ -1,6 +1,6 @@
-# Ixigo Frontend
+# Apna Plan Frontend
 
-A modern React frontend for the Ixigo travel booking platform with beautiful UI and responsive design.
+A modern React frontend for the Apna Plan travel booking platform with beautiful UI and responsive design.
 
 ## Features
 

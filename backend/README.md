@@ -1,6 +1,6 @@
-# Ixigo Backend API
+# Apna Plan Backend API
 
-Backend server for the Ixigo travel booking platform built with Express.js and Node.js.
+Backend server for the Apna Plan travel booking platform built with Express.js and Node.js.
 
 ## Features
 
@@ -31,7 +31,7 @@ npm install
 2. Create a `.env` file:
 ```
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/ixigo
+MONGODB_URI=mongodb://localhost:27017/apna_plan
 JWT_SECRET=your_secret_key_here
 NODE_ENV=development
 ```

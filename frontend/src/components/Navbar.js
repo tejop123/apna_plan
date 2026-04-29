@@ -21,13 +21,13 @@ const navItems = [
   { label: 'Get App', to: '/get-app', icon: <DownloadOutlined className="text-lg" /> }
 ];
 
-const ixigoHighlights = [
+const apnaPlanHighlights = [
   'Free reschedule support',
   'Verified partner network',
   'Rewards on every booking'
 ];
 
-const ixigoQuickLinks = [
+const apnaPlanQuickLinks = [
   {
     label: 'Compare flights smartly',
     description: 'Track fare trends, bags and reschedules in one view.',
@@ -62,7 +62,7 @@ const ixigoQuickLinks = [
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isIxigoPanelOpen, setIsIxigoPanelOpen] = useState(false);
+  const [isApnaPanelOpen, setIsApnaPanelOpen] = useState(false);
   const hasToken = typeof window !== 'undefined' && Boolean(window.localStorage.getItem('authToken'));
 
   const navLinkClass = ({ isActive }) =>
@@ -72,17 +72,17 @@ function Navbar() {
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
-    setIsIxigoPanelOpen(false);
+    setIsApnaPanelOpen(false);
   };
   const closeMenu = () => setIsMenuOpen(false);
-  const toggleIxigoPanel = () => {
-    setIsIxigoPanelOpen((prev) => !prev);
+  const toggleApnaPanel = () => {
+    setIsApnaPanelOpen((prev) => !prev);
     setIsMenuOpen(false);
   };
-  const closeIxigoPanel = () => setIsIxigoPanelOpen(false);
+  const closeApnaPanel = () => setIsApnaPanelOpen(false);
   const handleNavClick = () => {
     closeMenu();
-    closeIxigoPanel();
+    closeApnaPanel();
   };
 
   return (
@@ -91,7 +91,7 @@ function Navbar() {
         <div className="relative flex items-center gap-2">
           <Link
             to="/login"
-            onClick={closeIxigoPanel}
+            onClick={closeApnaPanel}
             className="flex items-center gap-3 rounded-full px-2 py-1 text-left transition hover:bg-slate-100"
             aria-label="Go to apna plan home"
           >
@@ -105,19 +105,19 @@ function Navbar() {
           </Link>
           <button
             type="button"
-            onClick={toggleIxigoPanel}
+            onClick={toggleApnaPanel}
             className="rounded-full p-2 text-slate-500 transition hover:bg-slate-100"
-            aria-expanded={isIxigoPanelOpen}
+            aria-expanded={isApnaPanelOpen}
             aria-haspopup="true"
             aria-label="Toggle apna plan hub preview"
           >
-            <DownOutlined className={`transition ${isIxigoPanelOpen ? 'rotate-180' : ''}`} />
+            <DownOutlined className={`transition ${isApnaPanelOpen ? 'rotate-180' : ''}`} />
           </button>
 
-          {isIxigoPanelOpen && (
+          {isApnaPanelOpen && (
             <div
               className="absolute left-0 top-14 w-screen max-w-3xl rounded-3xl border border-slate-200 bg-white/95 p-6 shadow-2xl backdrop-blur md:max-w-4xl"
-              onMouseLeave={closeIxigoPanel}
+              onMouseLeave={closeApnaPanel}
             >
               <div className="flex flex-col gap-6 md:flex-row md:items-start">
                 <div className="flex-1 space-y-4">
@@ -131,7 +131,7 @@ function Navbar() {
                     Compare fares, monitor live travel updates, sync itineraries across devices and get help from experts when plans change. Everything the apna plan hub covers is right here when you open the logo menu.
                   </p>
                   <div className="flex flex-wrap gap-3 text-xs font-medium text-slate-600">
-                    {ixigoHighlights.map((highlight) => (
+                    {apnaPlanHighlights.map((highlight) => (
                       <span
                         key={highlight}
                         className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 shadow-sm"
@@ -145,11 +145,11 @@ function Navbar() {
                 <div className="flex-1 space-y-4">
                   <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-900">Jump into a journey</h4>
                   <div className="grid gap-3">
-                    {ixigoQuickLinks.map((item) => (
+                    {apnaPlanQuickLinks.map((item) => (
                       <Link
                         key={item.label}
                         to={item.to}
-                        onClick={closeIxigoPanel}
+                        onClick={closeApnaPanel}
                         className="group rounded-2xl border border-slate-200 bg-white px-4 py-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-50"
                       >
                         <p className="text-sm font-semibold text-slate-900 group-hover:text-indigo-700">{item.label}</p>
@@ -210,7 +210,7 @@ function Navbar() {
                 Explore the highlights from the apna plan experience without leaving your current screen.
               </p>
               <div className="mt-3 grid gap-3">
-                {ixigoQuickLinks.map((item) => (
+                {apnaPlanQuickLinks.map((item) => (
                   <Link
                     key={item.label}
                     to={item.to}

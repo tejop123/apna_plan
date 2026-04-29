@@ -1,7 +1,7 @@
 {
-  "name": "ixigo-backend",
+  "name": "apna-plan-backend",
   "version": "1.0.0",
-  "description": "Ixigo Clone Backend API",
+  "description": "Apna Plan Travel Booking Backend API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
