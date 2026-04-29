@@ -42,3 +42,5 @@ coverage/
 # Production
 build/
 out/
+
+.vercel

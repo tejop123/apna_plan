@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
     role: { type: String, enum: ['user', 'admin'], default: 'user' },
     profilePicture: { type: String, default: '' },
     dateOfBirth: Date,
-    gender: { type: String, enum: ['male', 'female', 'other'], default: null },
+    gender: { type: String, enum: ['male', 'female', 'other'], default: 'other' },
     address: {
       street: String,
       city: String,

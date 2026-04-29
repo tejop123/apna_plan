@@ -10,11 +10,11 @@ const router = express.Router();
 router.post(
   '/register',
   [
-    body('name').trim().isLength({ min: 2 }).withMessage('Name is required'),
-    body('username').trim().isLength({ min: 3 }).withMessage('Username is required'),
-    body('email').isEmail().withMessage('Valid email is required'),
-    body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
-    body('phone').optional({ checkFalsy: true }).isMobilePhone().withMessage('Enter a valid phone number')
+    body('name').trim().notEmpty().isLength({ min: 2 }).withMessage('Name must be at least 2 characters'),
+    body('username').trim().notEmpty().isLength({ min: 3 }).withMessage('Username must be at least 3 characters'),
+    body('email').notEmpty().isEmail().withMessage('Valid email is required'),
+    body('password').notEmpty().isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
+    body('phone').optional({ checkFalsy: true }).matches(/^[0-9]{10}$/).withMessage('Enter a valid 10-digit phone number')
   ],
   handleValidationErrors,
   register
@@ -40,7 +40,7 @@ router.put(
   [
     param('id').isMongoId().withMessage('Invalid user id'),
     body('name').optional().isLength({ min: 2 }).withMessage('Name must be at least 2 characters'),
-    body('phone').optional({ checkFalsy: true }).isMobilePhone().withMessage('Enter a valid phone number')
+    body('phone').optional({ checkFalsy: true }).matches(/^[0-9]{10}$/).withMessage('Enter a valid 10-digit phone number')
   ],
   handleValidationErrors,
   authenticate,
